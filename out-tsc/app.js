@@ -4,26 +4,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { customElement, html, LitElement, property } from 'lit-element';
-let Stepper = class Stepper extends LitElement {
+import { customElement, html, LitElement } from 'lit-element';
+import './views';
+let GenericStepper = class GenericStepper extends LitElement {
     constructor() {
         super(...arguments);
         this.config = {};
     }
     connectedCallback() {
         super.connectedCallback();
-        console.log('ok');
+        const data = this.children[0];
+        this.config = JSON.parse(data.innerHTML);
     }
     render() {
-        const { title } = this.config;
-        return html ` <h3>${title}</h3> `;
+        return html ` <stepper-header .config=${this.config}></stepper-header> `;
     }
 };
-__decorate([
-    property({ converter: Object })
-], Stepper.prototype, "config", void 0);
-Stepper = __decorate([
+GenericStepper = __decorate([
     customElement('generic-stepper')
-], Stepper);
-export { Stepper };
-//# sourceMappingURL=stepper.js.map
+], GenericStepper);
+export { GenericStepper };
+//# sourceMappingURL=app.js.map

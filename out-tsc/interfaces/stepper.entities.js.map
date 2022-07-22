@@ -1,0 +1,1 @@
+{"version":3,"file":"stepper.entities.js","sourceRoot":"","sources":["../../src/interfaces/stepper.entities.ts"],"names":[],"mappings":"","sourcesContent":["export interface StepperConfig {\r\n  title: string;\r\n  steps?: string[];\r\n}\r\n"]}

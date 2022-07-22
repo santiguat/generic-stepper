@@ -15,7 +15,7 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "outDir": "./",
+    "outDir": "out-tsc",
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "rootDir": "src",

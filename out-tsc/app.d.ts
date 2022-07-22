@@ -1,4 +1,4 @@
-import { LitElement } from '../../node_modules/lit-element/lit-element.js';
+import { LitElement } from 'lit-element';
 import { StepperConfig } from './interfaces';
 import './views';
 export declare class GenericStepper extends LitElement {
