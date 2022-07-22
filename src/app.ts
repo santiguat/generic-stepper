@@ -1,6 +1,7 @@
-import {customElement, html, LitElement} from 'lit-element';
-import {StepperConfig} from './interfaces';
+import { customElement, html, LitElement } from 'lit-element';
+import { StepperConfig } from './interfaces';
 import './views';
+import './components';
 
 @customElement('generic-stepper')
 export class GenericStepper extends LitElement {
@@ -13,7 +14,12 @@ export class GenericStepper extends LitElement {
   }
 
   render() {
-    return html` <stepper-header .config=${this.config}></stepper-header> `;
+    const { title, fields, buttons } = this.config;
+    return html`
+      <stepper-header .config=${{ title }}></stepper-header>
+      <stepper-body .config=${{ fields }}></stepper-body>
+      <stepper-footer .config=${{ buttons }}></stepper-footer>
+    `;
   }
 }
 
