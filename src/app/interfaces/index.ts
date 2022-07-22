@@ -1,0 +1,1 @@
+export { StepperConfig } from './stepper.entities'
