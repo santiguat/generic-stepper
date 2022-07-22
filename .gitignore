@@ -4,3 +4,4 @@ out-tsc
 /test/
 /dist/
 /dev/
+.vscode
