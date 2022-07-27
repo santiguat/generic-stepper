@@ -1,4 +1,4 @@
-import { css } from 'lit-element';
+import { css } from 'lit';
 
 export const inputStyles = css`
   .effect {
@@ -38,7 +38,6 @@ export const inputStyles = css`
   }
 
   .input-container {
-    width: 30%; 
     position: relative;
   } 
   /* necessary to give position: relative to parent. */

@@ -1,7 +1,7 @@
-import { customElement, html, LitElement, property } from 'lit-element';
-import { LabelValue } from 'src/interfaces/stepper.entities';
 import { inputStyles } from '../styles';
-
+import { LabelValue } from 'src/interfaces/stepper.entities';
+import { customElement, property } from 'lit/decorators'
+import { html, LitElement } from 'lit';
 @customElement('input-field')
 export class InputField extends LitElement {
   @property({ converter: Object })

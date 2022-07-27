@@ -1,7 +1,8 @@
-import { customElement, html, LitElement } from 'lit-element';
 import { StepperConfig } from './interfaces';
 import './views';
 import './components';
+import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators.js'
 
 @customElement('generic-stepper')
 export class GenericStepper extends LitElement {
@@ -9,15 +10,15 @@ export class GenericStepper extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    const data = this.children[0];
-    this.config = JSON.parse(data.innerHTML);
+    const data = Array.from(this.children)[0];
+    this.config = JSON.parse(data ? data.innerHTML : '');
   }
 
   render() {
-    const { title, fields, buttons } = this.config;
+    const { title, steps, buttons } = this.config;
     return html`
-      <stepper-header .config=${{ title }}></stepper-header>
-      <stepper-body .config=${{ fields }}></stepper-body>
+      <stepper-header .config=${{ title, steps }}></stepper-header>
+      <stepper-body .config=${{ steps }}></stepper-body>
       <stepper-footer .config=${{ buttons }}></stepper-footer>
     `;
   }

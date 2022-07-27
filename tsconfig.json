@@ -20,6 +20,7 @@
     "experimentalDecorators": true,
     "rootDir": "src",
     "baseUrl": "./",
+    "strictPropertyInitialization": false,
     "paths": {
       "@app/*": ["/src/app/*"]
     }
