@@ -5,18 +5,23 @@ import { StepperConfig } from '../interfaces';
 
 @customElement('stepper-body')
 export class StepperBody extends LitElement {
+  @property({ converter: String })
+  stepChange: string;
+
   @property({ converter: Object })
   config = {} as StepperConfig;
 
-  connectedCallback() {
+
+  connectedCallback(): void {
     super.connectedCallback();
   }
 
   render() {
+    console.log(this.stepChange, this.config)
     const { steps } = this.config;
     const formattedSteps = steps.map((step: Step) => ({
       name: step.label,
-      fields: step.fields.map((field: LabelValue) => html`<input-field .fieldConfig="${field}"></input-field>`),
+      fields: step.fields.map((field: LabelValue) => html`<input-field .fieldconfig="${field}"></input-field>`),
     }));
 
     const builtForm = html`${formattedSteps.map((step) => {
@@ -26,7 +31,7 @@ export class StepperBody extends LitElement {
       return html` ${fieldsContainer}`;
     })}`;
     
-    return html`<motion-carousel>${builtForm}</motion-carousel>`
+    return html`<motion-carousel .stepChange=${this.stepChange}>${builtForm}</motion-carousel>`
   }
 }
 

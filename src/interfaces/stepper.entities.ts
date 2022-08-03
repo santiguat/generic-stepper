@@ -5,6 +5,11 @@ export interface StepperConfig {
   buttons: LabelValue[];
 }
 
+export interface ButtonsConfig {
+  next: LabelValue;
+  prev: LabelValue;
+}
+
 export interface LabelValue {
   label: string;
   value: string;

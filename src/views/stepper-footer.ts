@@ -1,12 +1,12 @@
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators';
-import { LabelValue } from 'src/interfaces/stepper.entities';
+import { ButtonsConfig } from 'src/interfaces/stepper.entities';
 import { stepperFooterStyles } from '../styles';
 
 @customElement('stepper-footer')
 export class StepperFooter extends LitElement {
   @property({ converter: Object })
-  config = {} as { buttons: LabelValue[] };
+  config = {} as { buttons: ButtonsConfig};
 
   static styles = [stepperFooterStyles];
 
@@ -17,10 +17,11 @@ export class StepperFooter extends LitElement {
 
   render() {
     const { buttons } = this.config;
+    const buttonKeys = Object.keys(buttons);
     return html` <div class="btns-container">
-      ${buttons.map(
-        (btn: LabelValue) =>
-          html`<simple-button .config="${btn}"></simple-button> `
+      ${buttonKeys.map(
+        (key: string) =>
+          html`<simple-button .id="${key}" .config="${buttons[key as keyof ButtonsConfig]}"></simple-button> `
       )}
     </div>`;
   }
