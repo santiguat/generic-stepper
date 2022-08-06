@@ -1,9 +1,10 @@
-import { StepperConfig } from './interfaces';
-import './views';
-import './components';
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import './components';
+import { StepperConfig } from './interfaces';
+import { StateMixin } from './mixins/state.mixin';
 import { generalStyles } from './styles';
+import './views';
 
 export enum StepChange {
   Previous = 'prev',
@@ -11,8 +12,11 @@ export enum StepChange {
 }
 
 @customElement('generic-stepper')
-export class GenericStepper extends LitElement {
+export class GenericStepper extends StateMixin(LitElement) {
   config = {} as StepperConfig;
+
+  @property({ converter: Object, reflect: true })
+  results = {};
 
   @property()
   stepChange: string;
@@ -28,6 +32,7 @@ export class GenericStepper extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('buttonPressed', this._handleNextPage);
+    this.addEventListener('onSubmit', this._handleNextPage);
 
     const data = Array.from(this.children)[0];
     this.config = JSON.parse(data ? data.innerHTML : '');

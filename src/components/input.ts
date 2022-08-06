@@ -15,6 +15,7 @@ export class InputField extends LitElement {
 
   render() {
     const { label, value } = this.fieldConfig;
+    console.log(value)
     return html`
       <div class="input">
         <label class="input-label">${label}</label>

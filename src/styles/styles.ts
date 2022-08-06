@@ -1,7 +1,9 @@
 import { css } from 'lit';
 
 export const generalStyles = css`
-.selected {
-    top: -100%;
+    @media (max-width: 600px) {
+  :host{
+    width: 100%
   }
+}
 ,`;
